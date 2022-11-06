@@ -77,29 +77,37 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Padding(
         padding: EdgeInsets.all(30),
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-          ),
-          itemCount: tcl.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Card(
-              color: tcl[index].color,
-              child: ListTile(
-                title: Center(
-                  child: index == 10
-                ? tcl[index].icono
-                : Text(
-                  tcl[index].titulo,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold, 
-                    fontSize: 35
-                  ),
+        child: Column(
+          children: [
+            TextField(),
+            TextField(),
+            Expanded(
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
                 ),
-                ),
+                itemCount: tcl.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    color: tcl[index].color,
+                    child: ListTile(
+                      title: Center(
+                        child: index == 10
+                      ? tcl[index].icono
+                      : Text(
+                        tcl[index].titulo,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold, 
+                          fontSize: 35
+                        ),
+                      ),
+                      ),
+                    ),
+                  );
+                },
               ),
-            );
-          },
+            ),
+          ],
         ),
       ),
        // This trailing comma makes auto-formatting nicer for build methods.
