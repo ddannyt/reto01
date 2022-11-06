@@ -32,6 +32,30 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+// se creal la clase el constructor
+class teclado{
+  final titulo;
+  final color;
+  final icono;
+
+  teclado(this.titulo, this.color, this.icono);
+}
+
+//lista de objetos
+List<teclado> tcl = <teclado>[
+  teclado("9", Colors.blueAccent, Icon(Icons.abc)),
+  teclado("8", Colors.blueAccent, Icon(Icons.abc)),
+  teclado("7", Colors.blueAccent, Icon(Icons.abc)),
+  teclado("6", Colors.blueAccent, Icon(Icons.abc)),
+  teclado("5", Colors.blueAccent, Icon(Icons.abc)),
+  teclado("4", Colors.blueAccent, Icon(Icons.abc)),
+  teclado("3", Colors.blueAccent, Icon(Icons.abc)),
+  teclado("2", Colors.blueAccent, Icon(Icons.abc)),
+  teclado("1", Colors.blueAccent, Icon(Icons.abc)),
+  teclado("0", Colors.blueAccent, Icon(Icons.abc)),
+  teclado("AC", Colors.blueAccent, Icon(Icons.clear_all)),
+  teclado("=", Colors.blueAccent, Icon(Icons.abc)),
+];
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
@@ -51,28 +75,34 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      body: Padding(
+        padding: EdgeInsets.all(30),
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+          ),
+          itemCount: tcl.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Card(
+              color: tcl[index].color,
+              child: ListTile(
+                title: Center(
+                  child: index == 10
+                ? tcl[index].icono
+                : Text(
+                  tcl[index].titulo,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold, 
+                    fontSize: 35
+                  ),
+                ),
+                ),
+              ),
+            );
+          },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
