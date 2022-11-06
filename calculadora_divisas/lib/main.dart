@@ -157,8 +157,40 @@ class _MyHomePageState extends State<MyHomePage> {
                           textOrigen.text = textOrigen.text + tcl[index].titulo;
                         }else if(index == 10){
                           textOrigen.clear();
-                        }else{
+                        }else {
+                          if (op1 == "USD" && op2 == "COP"){
+                            textDestino.text = (double.parse(textOrigen.text) * 5100)
+                            .toString();
+                          }
 
+                          if (op1 == "USD" && op2 == "EUR"){
+                            textDestino.text = (double.parse(textOrigen.text) * 5100)
+                            .toString();
+                          }
+
+                          if (op1 == "EUR" && op2 == "USD"){
+                            textDestino.text = (double.parse(textOrigen.text) * 5100)
+                            .toString();
+                          }
+
+                          if (op1 == "EUR" && op2 == "COP"){
+                            textDestino.text = (double.parse(textOrigen.text) * 5100)
+                            .toString();
+                          }
+
+                          if (op1 == "COP" && op2 == "USD"){
+                            textDestino.text = (double.parse(textOrigen.text) * 5100)
+                            .toString();
+                          }
+
+                          if (op1 == "COP" && op2 == "EUR"){
+                            textDestino.text = (double.parse(textOrigen.text) * 5100)
+                            .toString();
+                          }
+
+                          else{
+                            textDestino.text = textOrigen.text;
+                          }
                         }
                         
                       },
