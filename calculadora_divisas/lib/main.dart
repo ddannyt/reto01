@@ -79,8 +79,16 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: EdgeInsets.all(30),
         child: Column(
           children: [
-            TextField(),
-            TextField(),
+            TextField(decoration: InputDecoration(
+              labelText: "origen",
+              hintText: "0",
+              icon: Icon(Icons.monetization_on)
+            ),),
+            TextField(decoration: InputDecoration(
+              labelText: "origen",
+              hintText: "0",
+              icon: Icon(Icons.monetization_on)
+            ),),
             Expanded(
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
