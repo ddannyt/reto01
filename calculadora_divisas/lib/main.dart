@@ -102,6 +102,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       ),
+                      //ontap para crear la interacción 
+                      onTap:(){
+                        print(tcl[index].titulo);
+                      },
                     ),
                   );
                 },
