@@ -41,6 +41,18 @@ class teclado{
   teclado(this.titulo, this.color, this.icono);
 }
 
+//Declaracion de variables y lista para el drownbutton
+String op1 = "USD";
+String op2 = "COP";
+
+List<DropdownMenuItem<String>> listaMoneda = <DropdownMenuItem<String>>[
+  DropdownMenuItem(value: "USD",child: Text("USD")),
+  DropdownMenuItem(value: "EUR",child: Text("EUR")),
+  DropdownMenuItem(value: "COP",child: Text("COP")),
+];
+
+final textOrigen = TextEditingController();
+final textDestino =TextEditingController();
 //lista de objetos
 List<teclado> tcl = <teclado>[
   teclado("9", Colors.blueAccent, Icon(Icons.abc)),
@@ -79,15 +91,44 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: EdgeInsets.all(30),
         child: Column(
           children: [
-            TextField(decoration: InputDecoration(
-              labelText: "origen",
-              hintText: "0",
-              icon: Icon(Icons.monetization_on)
+            Row(
+              children: [
+                Text("Moneda Origen : "),
+                DropdownButton(
+                  value: op1,
+                  items: listaMoneda, 
+                  onChanged: (String? x){
+                    setState(() {
+                      op1 = x.toString();
+                    });
+                  }),
+
+                Text("Moneda Destino : "),
+                DropdownButton(
+                  value: op2,
+                  items: listaMoneda, 
+                  onChanged: (String? x){
+                    setState(() {
+                      op2 = x.toString();
+                    });
+                  }),
+              ],
+
+            ),
+            TextField(
+
+              controller: textOrigen,//el text origen representa el textfield
+              decoration: InputDecoration(
+                labelText: "origen",
+                hintText: "0",
+                icon: Icon(Icons.monetization_on)
             ),),
-            TextField(decoration: InputDecoration(
-              labelText: "origen",
-              hintText: "0",
-              icon: Icon(Icons.monetization_on)
+            TextField(
+              controller: textDestino,
+              decoration: InputDecoration(
+                labelText: "origen",
+                hintText: "0",
+                icon: Icon(Icons.monetization_on)
             ),),
             Expanded(
               child: GridView.builder(
@@ -112,7 +153,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       //ontap para crear la interacción 
                       onTap:(){
-                        print(tcl[index].titulo);
+                        if(index < 10){
+                          textOrigen.text = textOrigen.text + tcl[index].titulo;
+                        }else if(index == 10){
+                          textOrigen.clear();
+                        }else{
+
+                        }
+                        
                       },
                     ),
                   );
