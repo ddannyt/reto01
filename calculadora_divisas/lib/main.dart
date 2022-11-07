@@ -161,20 +161,21 @@ class _MyHomePageState extends State<MyHomePage> {
                           if (op1 == "USD" && op2 == "COP"){
                             textDestino.text = (double.parse(textOrigen.text) * 5100)
                             .toString();
-                          }else if (op1 == "USD" && op2 == "EUR"){
+                          }else if (op1 == "COP" && op2 == "USD"){
                             textDestino.text = (double.parse(textOrigen.text) / 5100)
-                            .toString();
-                          }else if (op1 == "EUR" && op2 == "USD"){
-                            textDestino.text = (double.parse(textOrigen.text) * 5100)
                             .toString();
                           }else if (op1 == "EUR" && op2 == "COP"){
-                            textDestino.text = (double.parse(textOrigen.text) / 5100)
-                            .toString();
-                          }else if (op1 == "COP" && op2 == "USD"){
-                            textDestino.text = (double.parse(textOrigen.text) * 5100)
+                            textDestino.text = (double.parse(textOrigen.text) * 1.1)
                             .toString();
                           }else if (op1 == "COP" && op2 == "EUR"){
                             textDestino.text = (double.parse(textOrigen.text) / 5100)
+                            .toString();
+
+                          }else if (op1 == "EUR" && op2 == "USD"){
+                            textDestino.text = (double.parse(textOrigen.text) / 1.1)
+                            .toString();
+                          }else if (op1 == "USD" && op2 == "EUR"){
+                            textDestino.text = (double.parse(textOrigen.text) / 1.1)
                             .toString();
                           }else{
                             textDestino.text = textOrigen.text;
