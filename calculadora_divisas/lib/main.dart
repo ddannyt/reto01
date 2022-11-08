@@ -47,7 +47,7 @@ String numberFormat(double x) {
   if (parts.length == 1) {
     parts.add('00');
   } else {
-    parts[1] = parts[1].padRight(2, '0').substring(0, 2);
+    parts[1] = parts[1].padRight(2, '0').substring(0, 4);
   }
   return parts.join(',');
 }
@@ -165,6 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         if (index < 10) {
                           textOrigen.text = textOrigen.text + tcl[index].titulo;
                         } else if (index == 10) {
+                          textDestino.clear();
                           textOrigen.clear();
                         } else {
                           if (op1 == "USD" && op2 == "COP") {
@@ -191,11 +192,12 @@ class _MyHomePageState extends State<MyHomePage> {
                             textDestino.text =
                                 (double.parse(textOrigen.text) / 1.1)
                                     .toString();
+                          } else {
+                            textDestino.text = textOrigen.text;
+                          }
+                          if (textDestino.text != textOrigen.text) {
                             textDestino.text =
                                 numberFormat(double.parse(textDestino.text));
-                          } else {
-                            textDestino.text =
-                                numberFormat(double.parse(textOrigen.text));
                           }
                         }
                       },
